@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Brief AI",
+  "version": "1.0.0",
+  "description": "Page summarizer using Open AI API ",
+  "icons": {
+    "16": "glasses.png",
+    "32": "glasses.png",
+    "48": "glasses.png",
+    "128": "glasses.png"
+  },
+  "action": {
+    "default_title": "Click Me",
+    "default_popup": "./popup/popup.html"
+  },
+ 
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "cross-origin": "use-credentials"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+        "scripting", 
+        "tabs", 
+        "activeTab"  
+      ],
+  "host_permissions": ["https://*/*", "http://*/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["./content.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+  
+}

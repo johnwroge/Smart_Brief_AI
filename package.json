@@ -1,0 +1,26 @@
+{
+  "name": "smartbrief-ai",
+  "version": "1.0.0",
+  "description": "This chrome extension was designed to summarize web content easily so users can get more done.",
+  "main": "background.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "dotenv": "^16.1.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "copy-webpack-plugin": "^11.0.0",
+    "html-webpack-plugin": "^5.5.3",
+    "imports-loader": "^4.0.1",
+    "webpack": "^5.87.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

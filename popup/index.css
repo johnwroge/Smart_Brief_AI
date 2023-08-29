@@ -1,0 +1,19 @@
+
+
+/* #summary {
+    width: 600px; 
+    height: 800px;
+    font-size: large;
+} */
+
+body {
+    width: 400px; 
+    height: 600px;
+    font-size: large;
+    border: black 1px solid;
+}
+
+#summary {
+    font-size: 14px;
+    color: #333;
+}
