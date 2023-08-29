@@ -28,7 +28,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 
 
-// asyncronous function that interacts with Open AI API to get summary
+// asynchronous function that interacts with Open AI API to get summary
 async function summarizeText(highlightedText) {
   const prompt = `Please summarize the following text: "${highlightedText}"`;
 
