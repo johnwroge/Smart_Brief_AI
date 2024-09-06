@@ -17,6 +17,10 @@ Remember to keep your API key confidential and never share it publicly. It's als
 
 ## Setting Up Backend
 
+Go to backend directory:
+
+`cd API`
+
 Create a virtual environment:
 
 `python -m venv env`
@@ -33,7 +37,7 @@ Install dependencies:
 
 `pip install -r requirements.txt`
 
-Create a .env file in the root directory and add your environment variables: 
+Create a .env file in the API directory and add your environment variables: 
 
 `OPENAI_API_KEY=your_openai_api_key)`
 
@@ -42,7 +46,9 @@ Run the FastAPI application:
 
 `uvicorn main:app --reload`
 
+After usage deactivate your virtual environment:
 
+`deactivate`
 
 ## Setting Up Frontend
 
