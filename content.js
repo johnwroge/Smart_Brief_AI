@@ -13,8 +13,6 @@ const sendSelectedText = debounce((selectedText) => {
       if (chrome.runtime.lastError) {
         console.error('Error in sendMessage:', chrome.runtime.lastError);
       }
-      // Remove or comment out the following line in production
-      // console.log('Response from background script:', response);
     });
   } else {
     console.error('Chrome runtime not available');
