@@ -1,11 +1,29 @@
 
-/* Contains API logic. Summarizes content and sends to popup.js */
 
-// Enter Your Open AI API Key Here: 
-const API_KEY = ''; 
+const BACKEND_URL = 'http://127.0.0.1:8000/summarize';
 
+async function summarizeText(highlightedText) {
+  try {
+    const response = await fetch(BACKEND_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: highlightedText }),
+    });
 
-// function geets selected text and invokes the summarize text function 
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    return data.summary;
+  } catch (err) {
+    console.error('Error in async summarizeText function:', err);
+    return 'Error summarizing text';
+  }
+}
+
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.message === 'getSelectedText') {
     const highlightedText = request.selectedText;
@@ -25,32 +43,3 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     return true;
   }
 });
-
-
-
-// asynchronous function that interacts with Open AI API to get summary
-async function summarizeText(highlightedText) {
-  const prompt = `Please summarize the following text: "${highlightedText}"`;
-
-  try {
-      const response = await fetch('https://api.openai.com/v1/engines/text-davinci-003/completions', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${API_KEY}`
-          },
-          body: JSON.stringify({
-              prompt,
-              max_tokens: 100,
-              temperature: 0.5
-          })
-      });
-
-      const data = await response.json();
-      return data.choices[0];
-  } catch (err) {
-      console.error('Error in async summarizeText function: ', err);
-      return null;
-  }
-}
-

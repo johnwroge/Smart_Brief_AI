@@ -1,3 +1,81 @@
-node_modules
-.env
+
 dist
+
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Build output
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Python-specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.sqlite3
+*.db
+*.egg-info/
+*.eggs/
+venv/
+ENV/
+env/
+*.egg
+
+# IDE and editor-specific
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# macOS Finder
+*.DS_Store
+
+# Python virtual environment
+venv/
+.env/
+ENV/
+env/
+
+# FastAPI and Uvicorn
+*.pid
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Pytest
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytype
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# Miscellaneous
+*.pem
+*.crt
+*.key

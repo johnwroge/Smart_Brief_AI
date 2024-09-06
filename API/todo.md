@@ -4,4 +4,4 @@ Need to create api to handle authentication for api key so that it is not stored
 
 Handling user auth using firebase. 
 
-Gandling api requests using serverless functions as well may be an alternative. 
+Handling api requests using serverless functions as well may be an alternative. 
