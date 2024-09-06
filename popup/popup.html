@@ -1,20 +1,52 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SmartBrief AI</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      body {
+        width: 300px;
+        padding: 10px;
+      }
+      #summary,
+      #error {
+        margin-top: 10px;
+      }
+      #error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>Use cursor to select text on screen to summarize</div>
+    <div>
+      <script src="popup.js"></script>
+      <div id="summary" style="display: none"></div>
+      <div id="error" style="display: none"></div>
+      <script src="popup.js"></script>
+    </div>
+    <h4>Text Synopsis</h4>
+    <div id="summary"></div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Summarizer</title>
+  <style>
+    body { width: 300px; padding: 10px; }
+    #summary, #error { margin-top: 10px; }
+    #error { color: red; }
+  </style>
 </head>
 <body>
-    <div>Use cursor to select text on screen to summarize</div> 
-    <div>
-        <script src="popup.js"></script>
-    </div>
-    <h4> Text Synopsis  </h4>
-    <div id = "summary">
-        
-    </div> 
+  <h2>Text Summary</h2>
+  <div id="summary" style="display: none;"></div>
+  <div id="error" style="display: none;"></div>
+  <script src="popup.js"></script>
 </body>
 </html>

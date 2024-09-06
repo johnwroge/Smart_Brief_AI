@@ -8,10 +8,13 @@ const debounce = (func, delay) => {
 };
 
 const sendSelectedText = debounce((selectedText) => {
+  console.log('Sending message:', selectedText); 
   if (chrome.runtime && chrome.runtime.sendMessage) {
     chrome.runtime.sendMessage({ message: 'getSelectedText', selectedText }, (response) => {
       if (chrome.runtime.lastError) {
         console.error('Error in sendMessage:', chrome.runtime.lastError);
+      } else {
+        console.log('Response received:', response); 
       }
     });
   } else {

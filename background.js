@@ -1,10 +1,8 @@
 const BACKEND_URL = 'http://127.0.0.1:8000/summarize';
-const FETCH_TIMEOUT = 10000; 
 
 async function summarizeText(highlightedText) {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
 
+  console.log('Received text:', highlightedText);
   try {
     const response = await fetch(BACKEND_URL, {
       method: 'POST',
@@ -12,42 +10,41 @@ async function summarizeText(highlightedText) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ text: highlightedText }),
-      signal: controller.signal,
     });
 
     if (!response.ok) {
+      if (response.status === 500) {
+        throw new Error('Server error (500): The server encountered an unexpected condition');
+      }
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
     return data.summary;
   } catch (err) {
-    if (err.name === 'AbortError') {
-      console.error('Request timed out');
-      return 'Error: Request timed out';
-    }
     console.error('Error in summarizeText:', err);
-    return `Error summarizing text: ${err.message}`;
-  } finally {
-    clearTimeout(timeoutId);
+    throw err; 
   }
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.message === 'getSelectedText') {
-    (async () => {
-      try {
-        const summary = await summarizeText(request.selectedText);
-        await chrome.runtime.sendMessage({
+    summarizeText(request.selectedText)
+      .then(summary => {
+        chrome.runtime.sendMessage({
           action: 'displaySummary',
           data: { summary }
         });
         sendResponse({ success: true });
-      } catch (err) {
+      })
+      .catch(err => {
         console.error('Error in background.js:', err);
+        chrome.runtime.sendMessage({
+          action: 'displayError',
+          data: { error: err.message }
+        });
         sendResponse({ success: false, error: err.message });
-      }
-    })();
+      });
     return true; 
   }
 });
