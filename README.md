@@ -15,6 +15,10 @@ Copy and securely store your API key, as it won't be shown again.
 Remember to keep your API key confidential and never share it publicly. It's also a good practice to set up usage limits and notifications in your OpenAI account settings to avoid unexpected charges.
 
 
+## Backend Overview
+
+The backend serves as the server-side component of your Chrome extension, handling complex operations and interactions with external services. Its primary role is to process and summarize text selected by users in their browser. When the extension captures selected text, it sends this data to the backend, which then communicates with the OpenAI API to generate a summary. The backend ensures secure management of API keys, performs text processing, and sends the summarized content back to the extension for display. By offloading these tasks to the backend, you enhance security, maintain separation of concerns, and ensure that sensitive operations are not exposed in the frontend code.
+
 ## Setting Up Backend
 
 Go to backend directory:
