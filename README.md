@@ -1,4 +1,4 @@
-# Smart Brief AI 
+# Smart Brief AI
 
 This chrome extension was designed to summarize web content easily so users can spend less time
 reading content and more time on the things they enjoy!
@@ -11,13 +11,20 @@ Once logged in, navigate to the API section (https://platform.openai.com/).
 In the left sidebar, click on "API Keys" and then "Create new secret key" to generate your API key.
 Copy and securely store your API key, as it won't be shown again.
 
-**Note:** To use the API, you'll need to purchase credits. After logging in, go to the "Billing" section in your account dashboard. Here, you can add a payment method and buy credits. The amount of credits you'll need depends on your usage, so start with a small amount and monitor your consumption.
-Remember to keep your API key confidential and never share it publicly. It's also a good practice to set up usage limits and notifications in your OpenAI account settings to avoid unexpected charges.
-
+**Note:** To use the API, you'll need to purchase credits. After logging in, go to the "Billing" section in your
+account dashboard. Here, you can add a payment method and buy credits. The amount of credits you'll need depends
+on your usage, so start with a small amount and monitor your consumption. Remember to keep your API key confidential
+and never share it publicly. It's also a good practice to set up usage limits and notifications in your OpenAI account
+settings to avoid unexpected charges.
 
 ## Backend Overview
 
-The backend serves as the server-side component of your Chrome extension, handling complex operations and interactions with external services. Its primary role is to process and summarize text selected by users in their browser. When the extension captures selected text, it sends this data to the backend, which then communicates with the OpenAI API to generate a summary. The backend ensures secure management of API keys, performs text processing, and sends the summarized content back to the extension for display. By offloading these tasks to the backend, you enhance security, maintain separation of concerns, and ensure that sensitive operations are not exposed in the frontend code.
+The backend serves as the server-side component of the extension. Its primary role is to process and summarize
+text selected by users in their browser. When the extension captures selected text, it sends this data to the backend,
+which then communicates with the OpenAI API to generate a summary. The backend ensures secure management of API keys,
+performs text processing, and sends the summarized content back to the extension for display. By offloading these tasks
+to the backend, you enhance security, maintain separation of concerns, and ensure that sensitive operations are not exposed
+in the frontend code.
 
 ## Setting Up Backend
 
@@ -41,10 +48,9 @@ Install dependencies:
 
 `pip install -r requirements.txt`
 
-Create a .env file in the API directory and add your environment variables: 
+Create a .env file in the API directory and add your environment variables:
 
 `OPENAI_API_KEY=your_openai_api_key)`
-
 
 Run the FastAPI application:
 
@@ -54,11 +60,14 @@ After usage deactivate your virtual environment:
 
 `deactivate`
 
-
 ## Frontend Overview
 
-The frontend of the Chrome extension is designed to capture user interactions on web pages and facilitate  communication with the backend. It consists of a content script that listens for text selections, a background script that handles the messaging between the content script and the backend server, and a manifest file that configures the extension's metadata and permissions. When a user selects text, the content script sends this data to the background script, which then requests a summary from the backend server. The extension's user interface, defined in the manifest, displays the summarized text, providing a streamlined and integrated user experience directly within the browser.
-
+The frontend of the Chrome extension is designed to capture user interactions on web pages and facilitate communication
+with the backend. It consists of a content script that listens for text selections, a background script that handles the
+messaging between the content script and the backend server, and a manifest file that configures the extension's metadata
+and permissions. When a user selects text, the content script sends this data to the background script, which then requests
+a summary from the backend server. The extension's user interface, defined in the manifest, displays the summarized
+text, providing a streamlined and integrated user experience directly within the browser.
 
 ## Setting Up Frontend
 
@@ -76,5 +85,3 @@ After loading the extension, pin it to the Chrome toolbar for easy access. Click
 
 On any webpage, select the text you want to summarize. You can either highlight specific text with your mouse or use the "Select All" option to choose all content on the page.
 A popup will appear with the summarized content generated by the extension.
-
-

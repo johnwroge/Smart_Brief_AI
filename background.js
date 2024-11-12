@@ -2,7 +2,7 @@ const BACKEND_URL = 'http://127.0.0.1:8000/summarize';
 
 async function summarizeText(highlightedText) {
 
-  console.log('Received text:', highlightedText);
+  // console.log('Received text:', highlightedText);
   try {
     const response = await fetch(BACKEND_URL, {
       method: 'POST',
